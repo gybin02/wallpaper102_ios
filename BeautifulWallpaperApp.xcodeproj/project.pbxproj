@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A90B053E2D75D8ED00D28128 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A90B053D2D75D8ED00D28128 /* Lottie */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A90B05052D75C56500D28128 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90B053E2D75D8ED00D28128 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = BeautifulWallpaperApp;
 			packageProductDependencies = (
+				A90B053D2D75D8ED00D28128 /* Lottie */,
 			);
 			productName = BeautifulWallpaperApp;
 			productReference = A90B04F22D75C56300D28128 /* BeautifulWallpaperApp.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = A90B04E92D75C56300D28128;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A90B053C2D75D8ED00D28128 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A90B04F32D75C56300D28128 /* Products */;
 			projectDirPath = "";
@@ -558,6 +567,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A90B053C2D75D8ED00D28128 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A90B053D2D75D8ED00D28128 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A90B053C2D75D8ED00D28128 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A90B04EA2D75C56300D28128 /* Project object */;
 }
