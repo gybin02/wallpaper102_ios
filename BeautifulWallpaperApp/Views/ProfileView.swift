@@ -133,7 +133,26 @@ struct ProfileView: View {
                                 .foregroundColor(.orange)
                         }
                     }
+                    // 预览页面
+                    NavigationLink(destination: WallpaperPreviewView()) {
+                        Label {
+                            Text("预览页面")
+                        } icon: {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.green)
+                        }
+                    }
+                    //预览设置
+                    NavigationLink(destination: WallpaperDetailView()) {
+                        Label {
+                            Text("预览设置")
+                        } icon: {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.green)
+                        }
+                    }
                 }
+                    
             }
             .listStyle(InsetGroupedListStyle())
             .background(Color.black)

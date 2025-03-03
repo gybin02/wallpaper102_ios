@@ -58,14 +58,14 @@ struct SearchView: View {
                             }
                         }
                         
-//                        FlowLayout(spacing: 8) {
-//                            ForEach(searchHistory, id: \.self) { item in
-//                                HistoryTag(text: item) {
-//                                    searchText = item
-//                                    isSearching = true
-//                                }
-//                            }
-//                        }
+                        FlowLayout(spacing: 8) {
+                            ForEach(searchHistory, id: \.self) { item in
+                                HistoryTag(text: item) {
+                                    searchText = item
+                                    isSearching = true
+                                }
+                            }
+                        }
                     }
                     .padding()
                 }
@@ -75,14 +75,14 @@ struct SearchView: View {
                     Text("热门搜索")
                         .font(.headline)
                     
-//                    FlowLayout(spacing: 8) {
-//                        ForEach(hotSearches, id: \.self) { item in
-//                            HotSearchTag(text: item, rank: hotSearches.firstIndex(of: item)! + 1) {
-//                                searchText = item
-//                                isSearching = true
-//                            }
-//                        }
-//                    }
+                    FlowLayout(spacing: 8) {
+                        ForEach(hotSearches, id: \.self) { item in
+                            HotSearchTag(text: item, rank: hotSearches.firstIndex(of: item)! + 1) {
+                                searchText = item
+                                isSearching = true
+                            }
+                        }
+                    }
                 }
                 .padding()
             } else {
@@ -105,11 +105,11 @@ struct SearchView: View {
 }
 
 // 流式布局
-struct FlowLayout: View {
+struct FlowLayout<Content: View>: View {
     let spacing: CGFloat
-    let content: () -> [AnyView]
-    init(spacing: CGFloat = 8, @ViewBuilder content: @escaping () -> [AnyView]) {
+    let content: () -> Content
     
+    init(spacing: CGFloat = 8, @ViewBuilder content: @escaping () -> Content) {
         self.spacing = spacing
         self.content = content
     }
@@ -126,31 +126,25 @@ struct FlowLayout: View {
         var lastHeight = CGFloat.zero
         
         return ZStack(alignment: .topLeading) {
-            ForEach(Array(self.content().enumerated()), id: \.offset) { index, view in
-                view
-                    .padding([.horizontal, .vertical], spacing)
-                    .alignmentGuide(.leading) { dimension in
-                        if abs(width - dimension.width) > geometry.size.width {
-                            width = 0
-                            height -= lastHeight
-                        }
-                        lastHeight = dimension.height
-                        let result = width
-                        if index == self.content().count - 1 {
-                            width = 0
-                        } else {
-                            width -= dimension.width
-                        }
-                        return result
+            content() // ✅ 这里现在返回的是 `View` 而不是 `[AnyView]`
+                .background(GeometryReader { innerGeo in
+                    Color.clear.onAppear {
+                        lastHeight = innerGeo.size.height
                     }
-                    .alignmentGuide(.top) { _ in
-                        let result = height
-                        if index == self.content().count - 1 {
-                            height = 0
-                        }
-                        return result
+                })
+                .alignmentGuide(.leading) { dimension in
+                    if abs(width - dimension.width) > geometry.size.width {
+                        width = 0
+                        height -= lastHeight
                     }
-            }
+                    let result = width
+                    width -= dimension.width
+                    return result
+                }
+                .alignmentGuide(.top) { _ in
+                    let result = height
+                    return result
+                }
         }
     }
 }
