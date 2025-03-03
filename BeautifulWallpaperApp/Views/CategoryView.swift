@@ -22,7 +22,7 @@ struct CategoryView: View {
         NavigationView {
             VStack(spacing: 0) {
                 // 搜索栏
-                SearchBar(searchText: $searchText)
+                SearchBar()
                     .padding()
                 
                 // 标签筛选区域

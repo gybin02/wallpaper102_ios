@@ -58,14 +58,14 @@ struct SearchView: View {
                             }
                         }
                         
-                        FlowLayout(spacing: 8) {
-                            ForEach(searchHistory, id: \.self) { item in
-                                HistoryTag(text: item) {
-                                    searchText = item
-                                    isSearching = true
-                                }
-                            }
-                        }
+//                        FlowLayout(spacing: 8) {
+//                            ForEach(searchHistory, id: \.self) { item in
+//                                HistoryTag(text: item) {
+//                                    searchText = item
+//                                    isSearching = true
+//                                }
+//                            }
+//                        }
                     }
                     .padding()
                 }
@@ -75,14 +75,14 @@ struct SearchView: View {
                     Text("热门搜索")
                         .font(.headline)
                     
-                    FlowLayout(spacing: 8) {
-                        ForEach(hotSearches, id: \.self) { item in
-                            HotSearchTag(text: item, rank: hotSearches.firstIndex(of: item)! + 1) {
-                                searchText = item
-                                isSearching = true
-                            }
-                        }
-                    }
+//                    FlowLayout(spacing: 8) {
+//                        ForEach(hotSearches, id: \.self) { item in
+//                            HotSearchTag(text: item, rank: hotSearches.firstIndex(of: item)! + 1) {
+//                                searchText = item
+//                                isSearching = true
+//                            }
+//                        }
+//                    }
                 }
                 .padding()
             } else {
@@ -108,8 +108,8 @@ struct SearchView: View {
 struct FlowLayout: View {
     let spacing: CGFloat
     let content: () -> [AnyView]
-    
     init(spacing: CGFloat = 8, @ViewBuilder content: @escaping () -> [AnyView]) {
+    
         self.spacing = spacing
         self.content = content
     }

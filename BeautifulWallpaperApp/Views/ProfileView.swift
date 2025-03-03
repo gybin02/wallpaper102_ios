@@ -22,9 +22,9 @@ struct ProfileView: View {
         NavigationView {
             List {
                 // 初始化时更新缓存大小
-                .onAppear {
-                    updateCacheSize()
-                }
+//                .onAppear {
+//                    updateCacheSize()
+//                }
                 // 用户信息区域
                 Section {
                     HStack(spacing: 15) {
